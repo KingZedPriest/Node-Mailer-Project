@@ -6,22 +6,21 @@ const port = process.env.PORT || 3000;
 
 //Transporter Creation
 let transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "mail.millenniuminvestment.net",
+  port: 465,
+  secure: true,
   auth: {
-    type: "OAuth2",
     user: process.env.MAIL_USERNAME,
     pass: process.env.MAIL_PASSWORD,
-    clientId: process.env.OAUTH_CLIENTID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
   },
 });
 
 //   Mail Options
 let mailOptions = {
-  from: "zedpriest@gmail.com",
-  to: "Charleschukwuemeka47@gmail.com",
+  from: "Millennium Investment <admin@millenniuminvestment.net>",
+  to: "zedpriest@gmail.com",
   subject: "Nodemailer Project",
+  sender: "Millennium Investment", 
   html: `<!doctype html>
   <html>
     <head>
@@ -31,9 +30,9 @@ let mailOptions = {
       <div style="display: block; margin: auto; max-width: 600px;" class="main">
         <h1 style="font-size: 18px; font-weight: bold; margin-top: 20px">Congrats for sending test email with Mailtrap!</h1>
         <p>Inspect it using the tabs you see above and learn how this email can be improved.</p>
-        <img alt="Inspect with Tabs" src="cid:welcome.png" style="width: 100%;">
-        <p>Now send your email using our fake SMTP server and integration of your choice!</p>
+        <p>Now send your email using SMTP server and integration of your choice!</p>
         <p>Good luck! Hope it works.</p>
+        <h1 style="font-size: 18px; font-weight: bold; margin-top: 20px">I also wants to say THANK YOU!</h1>
       </div>
       <!-- Example of invalid for email html/css, will be detected by Mailtrap: -->
       <style>
